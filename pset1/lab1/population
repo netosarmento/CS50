@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    int ni;
+    do
+{
+    ni = get_int("tamanhho inicial: ");
+}
+while (ni < 9);
+
+    int nf;
+    do
+{
+    nf = get_int("tamanhho final: ");
+}
+while (nf < ni);
+
+    int ganhos;
+    int perda;
+    int crescimento;
+    crescimento = ni;
+    int n = 0;
+    while (crescimento < nf)
+
+     {
+        ganhos = crescimento / 3;
+        perda = crescimento / 4;
+
+        crescimento += ganhos - perda;
+        n++;
+    }
+    printf("Years: %i\n", n);
+}
