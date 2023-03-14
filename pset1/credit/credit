@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <cs50.h>
+
+void longToString(long num, char *str)
+{
+    sprintf(str, "%ld", num);
+}
+void BandeiraCartao(string card)
+{
+    if (strncmp(card, "4", 1) == 0 && strlen(card) > 12)
+    {
+        // Cartão é Visa
+        printf("VISA\n");
+    }
+    else if (strncmp(card, "51", 2) >= 0 && strncmp(card, "55", 2) <= 0 && strlen(card) == 16)
+    {
+        // Cartão é Mastercard
+        printf("MASTERCARD\n");
+    }
+    else if ((strncmp(card, "34", 2) == 0 || strncmp(card, "37", 2) == 0) && (strlen(card) == 15))
+    {
+        // Cartão é American Express
+        printf("AMEX\n");
+    }
+    else
+    {
+        printf("INVALID\n");
+        // Tipo de cartão desconhecido
+    }
+
+}
+
+int Tescartao(long card)
+{
+    int conte = 0 ;
+    int soma_par = 0;
+    int soma_impar = 0;
+    while (card > 0)
+    {
+        int digit = card % 10; // Isola o último dígito
+        // printf(" %i", conte);
+        // printf("- %d ", digit);
+        conte++;
+        int n = digit;
+        card /= 10;
+        if (conte % 2 == 0)
+        {
+            // Verifica se a posição é par
+            n *= 2; // multiplica por 2
+            // se o numero for maior que 9 soma os digitos
+            // exemplo 13 soma 1+3 = 4
+            if (n > 9)
+            {
+                n = (n - 10) + 1;
+            }
+            soma_par += n;
+        }
+        else
+        {
+            soma_impar += n;
+        }
+
+    }
+    int total = soma_par + soma_impar;
+
+    if (total % 10 == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
+}
+
+int main()
+{
+    long card;
+    do
+    {
+        card = get_long("Digite o numero do cartao: ");
+    }
+    while (card < 0);
+
+    if (Tescartao(card))
+    {
+        char str[20];
+        longToString(card, str);
+        BandeiraCartao(str);
+    }
+    else
+    {
+        printf("INVALID\n");
+    }
+
+}
