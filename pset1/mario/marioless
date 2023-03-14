@@ -1,0 +1,36 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int h;
+    do
+    {
+        //Solicito a altura ao usuario
+        h = get_int("Qual a altura da pirâmide: ");
+    }
+    //condição para loop
+    while (h < 1 || h > 8);
+
+    //Criação da pirâmide
+    for (int i = 0; i < h; i++)
+    {
+        for (int j = 0; j < h; j++)
+        {
+            //condição para espaços em branco
+            if (i + j < h - 1)
+            {
+                printf(" ");
+            }
+            else if (i + j == h - 1 + i)
+            {
+                printf(" ");
+            }
+            else
+            {
+                printf("#");
+            }
+        }
+        printf("\n");
+    }
+}
