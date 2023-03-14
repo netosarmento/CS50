@@ -1,0 +1,53 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+// Codigo legal para carambolas
+
+int main(void)
+{
+        float n;
+        int c,c25,c10,c5,c1;
+        int m25=25, m10=10, m5=5, m1=1;
+        c25=0,c10=0,c5=0,c1=0;
+        do
+        {
+        n = get_float("Qual troco: ");
+    }
+    while (n < 0);
+
+    n = (n * 100);
+
+    //Calcular moedas de 25 centavos
+    if (n>=25)
+    do
+    {
+        n = n-25; m25++;
+    }
+    while(n>=25);
+    printf("O numero de moedas de 25 centavos é %i", c25);
+    //Calcular moedas de 10 centavos
+    if (n>=10)
+    do
+    {
+        n=n-10; c10++;
+    }
+    while (n>=10);
+    printf("O numero de moedas de 10 centavos é %i", c10);
+    //calculando moedas de 5 centavos
+    if (n>=5)
+    do
+    {
+        n=n-5; c5++;
+    }
+    while (n>=5);
+    printf("O numero de moedas de 5 centavos é %i", c5);
+    //Calculando moedas de 1 centavo
+    if(n>=1)
+    do
+    {
+        n=n-1; c1++;
+    }
+    while(n>=1);
+    printf("O numero de moedas de 1 centavo é %i", c1);
+
+}
